@@ -1,4 +1,5 @@
-                                                                                                           Travel Explorer – Planeador de Viagens Inteligente
+Travel Explorer – Planeador de Viagens Inteligente
+
 
 Autores:
 
