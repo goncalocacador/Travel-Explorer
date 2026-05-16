@@ -1,5 +1,16 @@
 export default class DestinationView {
 
+    renderLoading() {
+
+        const results = document.getElementById("results");
+
+        results.innerHTML = `
+            <div class="card">
+                <p>A carregar informações do destino...</p>
+            </div>
+        `;
+    }
+
     renderWeather(data) {
 
         const results = document.getElementById("results");

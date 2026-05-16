@@ -26,11 +26,13 @@ export default class DestinationController {
 
             try {
 
-                const destination = new DestinationModel(city);
+    this.view.renderLoading();
 
-                const weatherData = await destination.getWeatherData();
+    const destination = new DestinationModel(city);
 
-                this.view.renderWeather(weatherData);
+    const weatherData = await destination.getWeatherData();
+
+    this.view.renderWeather(weatherData);
 
             } catch(error) {
 
