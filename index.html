@@ -9,17 +9,31 @@
 </head>
 <body>
 
-<<<<<<< HEAD
-    <h1>Travel Explorer</h1>
-=======
-  <h1>Travel Explorer</h1>
+    <header class="navbar">
+        <h1>🌍 Travel Explorer</h1>
+    </header>
 
-  <p>Criação da página inicial para não ficar com a imagem 404 no GitHub Pages.</p>
+    <main>
 
-  <h2>Exemplo de erro 404:</h2>
+        <section class="hero">
+            <h2>Descobre o teu próximo destino</h2>
+            <p>Pesquisa cidades e explora informações úteis em tempo real.</p>
 
-  <img src="Imagens/404.png" alt="Erro 404" width="500">
->>>>>>> 5845108a52d100683eb101c2946984ee7b0010e6
+            <div class="search-box">
+                <input type="text" id="cityInput" placeholder="Pesquisar cidade...">
+                <button id="searchBtn">Pesquisar</button>
+            </div>
+        </section>
+
+        <section class="results" id="results">
+            <h3>Informações do destino</h3>
+
+            <div class="card">
+                <p>Os resultados da pesquisa irão aparecer aqui.</p>
+            </div>
+        </section>
+
+    </main>
 
     <script type="module" src="js/app.js"></script>
 </body>
