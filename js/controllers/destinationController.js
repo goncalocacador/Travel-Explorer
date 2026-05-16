@@ -15,7 +15,7 @@ export default class DestinationController {
 
     addEventListeners() {
 
-        this.searchBtn.addEventListener("click", () => {
+        this.searchBtn.addEventListener("click", async () => {
 
             const city = this.cityInput.value.trim();
 
@@ -24,9 +24,18 @@ export default class DestinationController {
                 return;
             }
 
-            const destination = new DestinationModel(city);
+            try {
 
-            this.view.renderDestination(destination);
+                const destination = new DestinationModel(city);
+
+                const weatherData = await destination.getWeatherData();
+
+                this.view.renderWeather(weatherData);
+
+            } catch(error) {
+
+                this.view.renderError(error.message);
+            }
         });
     }
 

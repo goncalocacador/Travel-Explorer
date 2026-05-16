@@ -1,6 +1,6 @@
 export default class DestinationView {
 
-    renderDestination(destination) {
+    renderWeather(data) {
 
         const results = document.getElementById("results");
 
@@ -8,8 +8,13 @@ export default class DestinationView {
             <h3>Informações do destino</h3>
 
             <div class="card">
-                <h2>${destination.cityName}</h2>
-                <p>Destino pesquisado com sucesso.</p>
+                <h2>${data.city}</h2>
+
+                <p><strong>Temperatura:</strong> ${data.temperature}°C</p>
+
+                <p><strong>Clima:</strong> ${data.weather}</p>
+
+                <p><strong>Humidade:</strong> ${data.humidity}%</p>
             </div>
         `;
     }
