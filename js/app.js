@@ -1,1 +1,3 @@
-console.log("Travel Explorer iniciado");
+import DestinationController from "./controllers/destinationController.js";
+
+new DestinationController();
