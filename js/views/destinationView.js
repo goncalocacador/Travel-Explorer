@@ -16,7 +16,7 @@ export default class DestinationView {
     const results = document.getElementById("results");
 
     results.innerHTML = `
-    
+
         <div class="card">
 
             <img src="${data.image}" 
@@ -185,6 +185,37 @@ export default class DestinationView {
             </div>
 
         `).join("");
+    }
+
+    showLoader() {
+
+        const results =
+        document.getElementById("results");
+
+        results.innerHTML = `
+
+            <div class="loader-container">
+
+                <div class="loader"></div>
+
+                <p>
+                    A carregar informações do destino...
+                </p>
+
+            </div>
+
+        `;
+    }
+
+    hideLoader() {
+
+        const loader =
+        document.querySelector(".loader-container");
+
+        if(loader) {
+
+            loader.remove();
+        }
     }
 
 }

@@ -49,6 +49,8 @@ export default class DestinationController {
                 this.view.renderError("Por favor introduz uma cidade.");
                 return;
             }
+            
+            this.view.showLoader();
 
             try {
 
@@ -71,6 +73,11 @@ export default class DestinationController {
             } catch(error) {
 
                 this.view.renderError(error.message);
+            }
+            
+            finally {
+
+                this.view.hideLoader();
             }
         });
     }

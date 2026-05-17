@@ -673,4 +673,57 @@ button:hover {
 
         text-align: center;
     }
+
+    .loader-container {
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 20px;
+
+        background-color: white;
+
+        padding: 40px;
+
+        border-radius: 12px;
+
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+
+        max-width: 700px;
+
+        margin: auto;
+    }
+
+    .loader {
+
+        width: 60px;
+
+        height: 60px;
+
+        border: 6px solid #e2e8f0;
+
+        border-top: 6px solid #2563eb;
+
+        border-radius: 50%;
+
+        animation: spin 1s linear infinite;
+    }
+
+        @keyframes spin {
+
+        from {
+
+            transform: rotate(0deg);
+        }
+
+        to {
+
+            transform: rotate(360deg);
+        }
+    }
 }
