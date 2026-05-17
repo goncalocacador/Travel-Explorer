@@ -13,22 +13,36 @@ export default class DestinationView {
 
     renderWeather(data) {
 
-        const results = document.getElementById("results");
+    const results = document.getElementById("results");
 
-        results.innerHTML = `
-            <h3>Informações do destino</h3>
+    results.innerHTML = `
+        <h3>Informações do destino</h3>
 
-            <div class="card">
-                <h2>${data.city}</h2>
+        <div class="card">
 
-                <p><strong>Temperatura:</strong> ${data.temperature}°C</p>
+            <img src="${data.flag}" 
+                 alt="Bandeira"
+                 class="flag">
 
-                <p><strong>Clima:</strong> ${data.weather}</p>
+            <h2>${data.city}, ${data.country}</h2>
 
-                <p><strong>Humidade:</strong> ${data.humidity}%</p>
-            </div>
-        `;
-    }
+            <p><strong>Capital:</strong> ${data.capital}</p>
+
+            <p><strong>Região:</strong> ${data.region}</p>
+
+            <p><strong>População:</strong> ${data.population.toLocaleString()}</p>
+
+            <hr>
+
+            <p><strong>Temperatura:</strong> ${data.temperature}°C</p>
+
+            <p><strong>Clima:</strong> ${data.weather}</p>
+
+            <p><strong>Humidade:</strong> ${data.humidity}%</p>
+
+        </div>
+    `;
+}
 
     renderError(message) {
 

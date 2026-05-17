@@ -80,3 +80,13 @@ body {
     font-size: 1.1rem;
     line-height: 1.6;
 }
+
+.flag {
+    width: 100px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.card hr {
+    margin: 20px 0;
+}
