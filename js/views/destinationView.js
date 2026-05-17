@@ -69,17 +69,6 @@ export default class DestinationView {
         </div>
     `;
 }
-
-    renderError(message) {
-
-        const results = document.getElementById("results");
-
-        results.innerHTML = `
-            <div class="card">
-                <p>${message}</p>
-            </div>
-        `;
-    }
     
     renderFavorites(favorites) {
 
@@ -217,5 +206,35 @@ export default class DestinationView {
             loader.remove();
         }
     }
+
+    renderError(message) {
+
+    const results =
+    document.getElementById("results");
+
+    results.innerHTML = "";
+
+    results.innerHTML = `
+
+        <div class="error-card">
+
+            <div class="error-icon">
+
+                ⚠️
+
+            </div>
+
+            <h3>
+                Ocorreu um erro
+            </h3>
+
+            <p>
+                ${message}
+            </p>
+
+        </div>
+
+    `;
+}
 
 }

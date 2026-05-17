@@ -40,46 +40,63 @@ export default class DestinationController {
     }
 
     addEventListeners() {
+            this.searchBtn.addEventListener("click", () => {
 
-        this.searchBtn.addEventListener("click", async () => {
-
-            const city = this.cityInput.value.trim();
-
-            if(city === "") {
-                this.view.renderError("Por favor introduz uma cidade.");
-                return;
-            }
-            
-            this.view.showLoader();
-
-            try {
-
-    this.view.renderLoading();
-
-    const destination = new DestinationModel(city);
-
-    const weatherData = await destination.getWeatherData();
-
-    this.view.renderWeather(weatherData);
-
-        this.updateWeatherTheme(
-        weatherData.weatherMain
-    );
-
-    this.saveSearchHistory(city);
-
-    this.handleFavoriteButton(weatherData);
-
-            } catch(error) {
-
-                this.view.renderError(error.message);
-            }
-            
-            finally {
-
-                this.view.hideLoader();
-            }
+            this.searchDestination();
         });
+    }
+
+    async searchDestination(customCity = null) {
+
+        const results =
+        document.getElementById("results");
+
+        results.innerHTML = "";
+
+            const city =
+            customCity ?? this.cityInput.value.trim();
+
+        if(city === "") {
+
+            this.view.renderError(
+                "Por favor introduz uma cidade."
+            );
+
+            return;
+        }
+
+        this.view.showLoader();
+
+        try {
+
+            const destination =
+            new DestinationModel(city);
+
+            const weatherData =
+            await destination.getWeatherData();
+
+            this.view.renderWeather(weatherData);
+
+            this.updateWeatherTheme(
+                weatherData.weatherMain
+            );
+
+            this.saveSearchHistory(city);
+
+            this.handleFavoriteButton(weatherData);
+
+        } catch(error) {
+
+            document.body.className = "";
+
+            this.view.renderError(
+                "Não foi possível encontrar a cidade pesquisada."
+            );
+
+        } finally {
+
+            this.view.hideLoader();
+        }
     }
 
     handleFavoriteButton(weatherData) {
@@ -268,21 +285,20 @@ export default class DestinationController {
 
         handleHistoryClick() {
 
-        const historyItems =
-        document.querySelectorAll(".history-item");
+            const historyItems =
+            document.querySelectorAll(".history-item");
 
-        historyItems.forEach(item => {
+            historyItems.forEach(item => {
 
-            item.addEventListener("click", () => {
+                item.addEventListener("click", async () => {
 
-                const city =
-                item.dataset.city;
+                    const city =
+                    item.dataset.city;
 
-                this.cityInput.value = city;
+                    this.cityInput.value = city;
 
-                this.searchBtn.click();
+                    await this.searchDestination(city);
+                });
             });
-        });
-    }
-
+        }
 }
