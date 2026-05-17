@@ -48,22 +48,27 @@ main {
 
 
 .navbar {
-    background-color: #0f172a;
 
-    color: white;
+        background-color: #0f172a;
 
-    padding: 20px;
+        color: white;
 
-    text-align: center;
+        padding: 20px;
 
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+        display: flex;
 
-    position: sticky;
+        justify-content: space-between;
 
-    top: 0;
+        align-items: center;
 
-    z-index: 100;
-}
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 100;
+    }
 
 .navbar h1 {
     letter-spacing: 1px;
@@ -775,4 +780,166 @@ button:hover {
             color: #475569;
 
             line-height: 1.6;
+        }
+
+    .theme-toggle {
+
+        background-color: transparent;
+
+        border: 2px solid white;
+
+        color: white;
+
+        padding: 8px 14px;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        font-size: 1rem;
+
+        transition: 0.3s;
+    }
+
+    .theme-toggle:hover {
+
+        background-color: white;
+
+        color: #0f172a;
+    }
+
+    .dark-mode {
+
+            background: linear-gradient(
+                to bottom,
+                #020617,
+                #0f172a
+            );
+
+            color: #f8fafc;
+        }
+
+
+        .dark-mode .navbar {
+
+            background-color: #111827;
+
+            border-bottom: 1px solid #1e293b;
+        }
+
+
+        .dark-mode .hero p {
+
+            color: #cbd5e1;
+        }
+
+
+        .dark-mode h2,
+        .dark-mode h3,
+        .dark-mode h4,
+        .dark-mode p,
+        .dark-mode strong {
+
+            color: #f8fafc;
+        }
+
+
+        .dark-mode .card,
+        .dark-mode .favorite-card,
+        .dark-mode .error-card,
+        .dark-mode .loader-container {
+
+            background-color: #1e293b;
+
+            color: white;
+
+            box-shadow:
+                0px 4px 12px rgba(0,0,0,0.4);
+        }
+
+
+        .dark-mode input,
+        .dark-mode select {
+
+            background-color: #0f172a;
+
+            color: white;
+
+            border: 1px solid #334155;
+        }
+
+
+        .dark-mode input::placeholder {
+
+            color: #94a3b8;
+        }
+
+
+        .dark-mode .favorite-content p {
+
+            color: #cbd5e1;
+        }
+
+
+        .dark-mode .history-item {
+
+            background-color: #1e293b;
+
+            color: white;
+
+            border: 1px solid #334155;
+        }
+
+        .dark-mode .history-item:hover {
+
+            background-color: #2563eb;
+        }
+
+
+        .dark-mode .favorites-controls input,
+        .dark-mode .favorites-controls select {
+
+            background-color: #1e293b;
+
+            color: white;
+        }
+
+
+        .dark-mode .empty-favorites,
+        .dark-mode .empty-history {
+
+            background-color: transparent;
+
+            color: #cbd5e1;
+        }
+
+
+        .dark-mode .theme-toggle {
+
+            border: 1px solid #334155;
+        }
+
+
+        .dark-mode .weather-badge {
+
+            background-color: #2563eb;
+
+            color: white;
+        }
+
+        .dark-mode .error-card {
+
+        background-color: #1e293b !important;
+
+            color: white;
+        }
+
+        .dark-mode .error-card h3 {
+
+            color: #f87171;
+        }
+
+        .dark-mode .error-card p {
+
+            color: #cbd5e1;
         }

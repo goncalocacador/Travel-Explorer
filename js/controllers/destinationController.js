@@ -37,6 +37,15 @@ export default class DestinationController {
         this.view.renderSearchHistory(
             this.searchHistory
         );
+
+        this.handleHistoryClick();
+
+        this.themeToggle =
+        document.getElementById("themeToggle");
+
+        this.initializeTheme();
+
+        this.handleThemeToggle();
     }
 
     addEventListeners() {
@@ -87,7 +96,13 @@ export default class DestinationController {
 
         } catch(error) {
 
-            document.body.className = "";
+            document.body.classList.remove(
+            "sunny-theme",
+            "cloudy-theme",
+            "rainy-theme",
+            "snow-theme",
+            "default-theme"
+        );
 
             this.view.renderError(
                 "Não foi possível encontrar a cidade pesquisada."
@@ -229,7 +244,13 @@ export default class DestinationController {
 
         const body = document.body;
 
-        body.className = "";
+        body.classList.remove(
+            "sunny-theme",
+            "cloudy-theme",
+            "rainy-theme",
+            "snow-theme",
+            "default-theme"
+        );
 
         if(weatherType === "Clear") {
 
@@ -299,6 +320,38 @@ export default class DestinationController {
 
                     await this.searchDestination(city);
                 });
+            });
+        }
+
+        initializeTheme() {
+
+            const savedTheme =
+            localStorage.getItem("theme");
+
+            if(savedTheme === "dark") {
+
+                document.body.classList.add("dark-mode");
+
+                this.themeToggle.textContent = "☀️";
+            }
+        }
+
+        handleThemeToggle() {
+
+            this.themeToggle.addEventListener("click", () => {
+
+                document.body.classList.toggle("dark-mode");
+
+                const isDark =
+                document.body.classList.contains("dark-mode");
+
+                localStorage.setItem(
+                    "theme",
+                    isDark ? "dark" : "light"
+                );
+
+                this.themeToggle.textContent =
+                isDark ? "☀️" : "🌙";
             });
         }
 }
