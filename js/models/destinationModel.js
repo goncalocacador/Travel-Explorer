@@ -26,6 +26,17 @@ export default class DestinationModel {
 
         const countryData = await countryResponse.json();
 
+        const unsplashKey = "c98ao0BAlVOpN08nCF7gNxD0vpgGKKSgGWUGp102Vq8";
+
+        const imageUrl = `https://api.unsplash.com/search/photos?page=1&query=${this.cityName}&client_id=${unsplashKey}`;
+
+        const imageResponse = await fetch(imageUrl);
+
+        const imageData = await imageResponse.json();
+
+        const destinationImage = imageData.results[0]?.urls?.regular ||
+        "https://via.placeholder.com/800x400?text=Imagem+Indisponivel";
+
         return {
             city: weatherData.name,
             temperature: weatherData.main.temp,
@@ -36,7 +47,9 @@ export default class DestinationModel {
             capital: countryData[0].capital[0],
             population: countryData[0].population,
             region: countryData[0].region,
-            flag: countryData[0].flags.png
+            flag: countryData[0].flags.png,
+
+            image: destinationImage
         };
     }
 

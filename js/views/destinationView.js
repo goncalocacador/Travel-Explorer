@@ -20,9 +20,13 @@ export default class DestinationView {
 
         <div class="card">
 
+            <img src="${data.image}" 
+                alt="${data.city}"
+                class="destination-image">
+
             <img src="${data.flag}" 
-                 alt="Bandeira"
-                 class="flag">
+                alt="Bandeira"
+                class="flag">
 
             <h2>${data.city}, ${data.country}</h2>
 
@@ -39,7 +43,7 @@ export default class DestinationView {
             <p><strong>Clima:</strong> ${data.weather}</p>
 
             <p><strong>Humidade:</strong> ${data.humidity}%</p>
-
+             
         </div>
     `;
 }
