@@ -24,6 +24,12 @@ body {
     transition: background 0.4s ease;
 }
 
+main {
+    max-width: 1200px;
+
+    margin: auto;
+}
+
 
 
 ::-webkit-scrollbar {
@@ -36,9 +42,9 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: #94a3b8;
+
     border-radius: 999px;
 }
-
 
 
 .navbar {
@@ -64,11 +70,10 @@ body {
 }
 
 
-
 .hero {
     text-align: center;
 
-    padding: 80px 20px 60px 20px;
+    padding: 60px 20px 40px 20px;
 }
 
 .hero h2 {
@@ -144,6 +149,72 @@ select:focus {
 
 button:hover {
     transform: scale(1.03);
+}
+
+
+
+.search-history {
+    padding: 20px;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.search-history h3 {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.history-list {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.history-item {
+    background-color: white;
+
+    border: 1px solid #cbd5e1;
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
+}
+
+.history-item:hover {
+    background-color: #2563eb;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+.empty-history {
+    text-align: center;
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
 }
 
 
@@ -319,6 +390,7 @@ button:hover {
 }
 
 
+
 .favorites-controls {
     max-width: 700px;
 
@@ -341,6 +413,7 @@ button:hover {
 
     border: 1px solid #ccc;
 }
+
 
 
 .favorite-card {

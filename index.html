@@ -15,68 +15,113 @@
 
     <main>
 
-        <section class="hero">
-            <h2>Descobre o teu próximo destino</h2>
-            <p>Pesquisa cidades e explora informações úteis em tempo real.</p>
+    <section class="hero">
 
-            <div class="search-box">
-                <input type="text" id="cityInput" placeholder="Pesquisar cidade...">
-                <button id="searchBtn">
-    🔍              Pesquisar
-                </button>
+        <h2>Descobre o teu próximo destino</h2>
+
+        <p>
+            Pesquisa cidades e explora informações úteis em tempo real.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Pesquisar cidade..."
+            >
+
+            <button id="searchBtn">
+
+                🔍 Pesquisar
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="search-history">
+
+        <h3>🕘 Histórico de Pesquisas</h3>
+
+        <div id="historyList" class="history-list">
+
+            <div class="empty-history">
+
+                <p>Sem pesquisas recentes.</p>
+
             </div>
-        </section>
 
-        <section class="results" id="results">
-            <h3>Informações do destino</h3>
+        </div>
+
+    </section>
+
+    <section class="results">
+
+        <h3>Informações do destino</h3>
+
+        <div id="results">
 
             <div class="card">
-                <p>Os resultados da pesquisa irão aparecer aqui.</p>
-            </div>
-        </section>
 
-        <section class="favorites">
-
-            <h3>⭐ Destinos Favoritos</h3>
-
-            <div class="favorites-controls">
-
-                <input type="text"
-                    id="favoriteSearch"
-                    placeholder="Pesquisar favoritos...">
-
-                <select id="favoriteSort">
-
-                    <option value="name">Ordenar por nome</option>
-
-                    <option value="temperature">
-                        Ordenar por temperatura
-                    </option>
-
-                    <option value="date">
-                        Ordenar por data
-                    </option>
-
-                </select>
+                <p>
+                    Os resultados da pesquisa irão aparecer aqui.
+                </p>
 
             </div>
 
-            <div id="favoritesList" class="favorites-list">
+        </div>
+
+    </section>
+
+    <section class="favorites">
+
+        <h3>⭐ Destinos Favoritos</h3>
+
+        <div class="favorites-controls">
+
+            <input
+                type="text"
+                id="favoriteSearch"
+                placeholder="Pesquisar favoritos..."
+            >
+
+            <select id="favoriteSort">
+
+                <option value="name">
+                    Ordenar por nome
+                </option>
+
+                <option value="temperature">
+                    Ordenar por temperatura
+                </option>
+
+                <option value="date">
+                    Ordenar por data
+                </option>
+
+            </select>
+
+        </div>
+
+        <div id="favoritesList" class="favorites-list">
 
             <div class="empty-favorites">
 
-                    <h4>⭐ Sem favoritos</h4>
+                <h4>⭐ Sem favoritos</h4>
 
-                    <p>
-                        Pesquisa destinos e adiciona-os aos favoritos.
-                    </p>
-
-                </div>
+                <p>
+                    Pesquisa destinos e adiciona-os aos favoritos.
+                </p>
 
             </div>
 
-        </section>
-    </main>
+        </div>
+
+    </section>
+
+</main>
 
     <script type="module" src="js/app.js"></script>
 </body>

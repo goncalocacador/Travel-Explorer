@@ -28,6 +28,15 @@ export default class DestinationController {
         this.handleFavoriteSort();
 
         this.initializeFavoriteEvents();
+
+        this.handleHistoryClick();
+
+        this.searchHistory =
+        JSON.parse(localStorage.getItem("searchHistory")) || [];
+
+        this.view.renderSearchHistory(
+            this.searchHistory
+        );
     }
 
     addEventListeners() {
@@ -54,6 +63,9 @@ export default class DestinationController {
         this.updateWeatherTheme(
         weatherData.weatherMain
     );
+
+    this.saveSearchHistory(city);
+
     this.handleFavoriteButton(weatherData);
 
             } catch(error) {
@@ -219,6 +231,51 @@ export default class DestinationController {
 
             body.classList.add("default-theme");
         }
+    }
+
+        saveSearchHistory(city) {
+
+        this.searchHistory =
+        this.searchHistory.filter(
+            item => item !== city
+        );
+
+        this.searchHistory.unshift(city);
+
+        if(this.searchHistory.length > 8) {
+
+            this.searchHistory.pop();
+        }
+
+        localStorage.setItem(
+            "searchHistory",
+            JSON.stringify(this.searchHistory)
+        );
+
+        this.view.renderSearchHistory(
+            this.searchHistory
+        );
+
+        this.handleHistoryClick();
+    }
+
+        handleHistoryClick() {
+
+        const historyItems =
+        document.querySelectorAll(".history-item");
+
+        historyItems.forEach(item => {
+
+            item.addEventListener("click", () => {
+
+                const city =
+                item.dataset.city;
+
+                this.cityInput.value = city;
+
+                this.searchBtn.click();
+            });
+        });
     }
 
 }

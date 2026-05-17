@@ -16,8 +16,7 @@ export default class DestinationView {
     const results = document.getElementById("results");
 
     results.innerHTML = `
-        <h3>Informações do destino</h3>
-
+    
         <div class="card">
 
             <img src="${data.image}" 
@@ -160,6 +159,32 @@ export default class DestinationView {
         };
 
         return weatherIcons[weatherType] || "🌍";
+    }
+
+    renderSearchHistory(history) {
+
+        const historyList =
+        document.getElementById("historyList");
+
+        if(history.length === 0) {
+
+            historyList.innerHTML = `
+                <p>Sem pesquisas recentes.</p>
+            `;
+
+            return;
+        }
+
+        historyList.innerHTML = history.map(city => `
+
+            <div class="history-item"
+                data-city="${city}">
+
+                ${city}
+
+            </div>
+
+        `).join("");
     }
 
 }
