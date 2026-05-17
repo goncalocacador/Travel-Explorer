@@ -20,7 +20,25 @@ body {
     color: #1e293b;
 
     min-height: 100vh;
+
+    transition: background 0.4s ease;
 }
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 999px;
+}
+
 
 
 .navbar {
@@ -46,6 +64,7 @@ body {
 }
 
 
+
 .hero {
     text-align: center;
 
@@ -65,6 +84,7 @@ body {
 
     font-size: 1.1rem;
 }
+
 
 
 .search-box {
@@ -103,6 +123,8 @@ body {
     background-color: #1d4ed8;
 }
 
+
+
 input,
 select,
 button {
@@ -125,6 +147,7 @@ button:hover {
 }
 
 
+
 .results {
     padding: 40px 20px;
 }
@@ -134,6 +157,7 @@ button:hover {
 
     margin-bottom: 20px;
 }
+
 
 
 .card {
@@ -152,6 +176,8 @@ button:hover {
     transition: 0.3s ease;
 
     overflow: hidden;
+
+    animation: fadeIn 0.4s ease;
 }
 
 .card:hover {
@@ -169,6 +195,7 @@ button:hover {
 }
 
 
+
 .destination-image {
     width: 100%;
 
@@ -182,6 +209,7 @@ button:hover {
 }
 
 
+
 .flag {
     width: 100px;
 
@@ -189,6 +217,89 @@ button:hover {
 
     border-radius: 6px;
 }
+
+
+
+.weather-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.weather-icon {
+    width: 70px;
+
+    height: 70px;
+}
+
+
+
+.weather-status {
+    margin: 20px 0;
+}
+
+.weather-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background-color: #2563eb;
+
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    font-weight: bold;
+
+    font-size: 0.95rem;
+
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+}
+
+
+
+.weather-info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.weather-info-item {
+    background-color: #f8fafc;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.weather-info-item h4 {
+    margin-bottom: 8px;
+
+    font-size: 0.95rem;
+
+    color: #475569;
+}
+
+.weather-info-item p {
+    font-size: 1.1rem;
+
+    font-weight: bold;
+}
+
 
 
 .favorites {
@@ -244,6 +355,8 @@ button:hover {
     box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
 
     transition: 0.3s ease;
+
+    animation: fadeIn 0.4s ease;
 }
 
 .favorite-card:hover {
@@ -295,10 +408,13 @@ button:hover {
 }
 
 
+
 .favorite-btn {
+    width: 100%;
+
     margin-top: 20px;
 
-    padding: 12px 18px;
+    padding: 14px;
 
     background-color: #16a34a;
 
@@ -306,14 +422,19 @@ button:hover {
 
     border: none;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
     cursor: pointer;
+
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
 }
 
 .favorite-btn:hover {
     background-color: #15803d;
 }
+
 
 
 .notification {
@@ -329,12 +450,15 @@ button:hover {
 
     padding: 15px 20px;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
     z-index: 999;
 
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+
+    animation: slideIn 0.3s ease;
 }
+
 
 
 .empty-favorites {
@@ -352,6 +476,83 @@ button:hover {
 .empty-favorites h4 {
     margin-bottom: 10px;
 }
+
+
+
+.sunny-theme {
+    background: linear-gradient(
+        to bottom,
+        #fef3c7,
+        #fde68a
+    );
+}
+
+.cloudy-theme {
+    background: linear-gradient(
+        to bottom,
+        #cbd5e1,
+        #94a3b8
+    );
+}
+
+.rainy-theme {
+    background: linear-gradient(
+        to bottom,
+        #334155,
+        #0f172a
+    );
+
+    color: white;
+}
+
+.snow-theme {
+    background: linear-gradient(
+        to bottom,
+        #e0f2fe,
+        #bae6fd
+    );
+}
+
+.default-theme {
+    background: linear-gradient(
+        to bottom,
+        #f8fafc,
+        #e2e8f0
+    );
+}
+
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+
+    from {
+        opacity: 0;
+
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateX(0);
+    }
+}
+
 
 
 @media(max-width: 768px) {
@@ -388,5 +589,15 @@ button:hover {
 
     .favorite-card img {
         height: 180px;
+    }
+
+    .weather-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .weather-header {
+        flex-direction: column;
+
+        text-align: center;
     }
 }

@@ -50,6 +50,10 @@ export default class DestinationController {
     const weatherData = await destination.getWeatherData();
 
     this.view.renderWeather(weatherData);
+
+        this.updateWeatherTheme(
+        weatherData.weatherMain
+    );
     this.handleFavoriteButton(weatherData);
 
             } catch(error) {
@@ -183,6 +187,38 @@ export default class DestinationController {
     initializeFavoriteEvents() {
 
         this.handleRemoveFavorite();
+    }
+
+        updateWeatherTheme(weatherType) {
+
+        const body = document.body;
+
+        body.className = "";
+
+        if(weatherType === "Clear") {
+
+            body.classList.add("sunny-theme");
+        }
+
+        else if(weatherType === "Clouds") {
+
+            body.classList.add("cloudy-theme");
+        }
+
+        else if(weatherType === "Rain") {
+
+            body.classList.add("rainy-theme");
+        }
+
+        else if(weatherType === "Snow") {
+
+            body.classList.add("snow-theme");
+        }
+
+        else {
+
+            body.classList.add("default-theme");
+        }
     }
 
 }

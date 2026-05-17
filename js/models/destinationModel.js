@@ -49,7 +49,10 @@ export default class DestinationModel {
             region: countryData[0].region,
             flag: countryData[0].flags.png,
 
-            image: destinationImage
+            image: destinationImage,
+
+            weatherMain: weatherData.weather[0].main,
+            icon: weatherData.weather[0].icon
         };
     }
 

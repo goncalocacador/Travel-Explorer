@@ -28,11 +28,30 @@ export default class DestinationView {
                 alt="Bandeira"
                 class="flag">
 
-            <h2>${data.city}, ${data.country}</h2>
+            <div class="weather-header">
+
+                <img 
+                    src="https://openweathermap.org/img/wn/${data.icon}@2x.png"
+                    alt="Weather Icon"
+                    class="weather-icon"
+                >
+
+                <h2>${data.city}, ${data.country}</h2>
+
+            </div>
 
             <p><strong>Capital:</strong> ${data.capital}</p>
 
-            <p><strong>Região:</strong> ${data.region}</p>
+            <div class="weather-status">
+
+                <span class="weather-badge">
+
+                    ${this.getWeatherEmoji(data.weatherMain)}
+                    ${data.weatherMain}
+
+                </span>
+
+            </div>
 
             <p><strong>População:</strong> ${data.population.toLocaleString()}</p>
 
@@ -119,6 +138,28 @@ export default class DestinationView {
         setTimeout(() => {
             notification.remove();
         }, 3000);
+    }
+
+        getWeatherEmoji(weatherType) {
+
+        const weatherIcons = {
+
+            Clear: "☀️",
+
+            Clouds: "☁️",
+
+            Rain: "🌧️",
+
+            Snow: "❄️",
+
+            Thunderstorm: "⛈️",
+
+            Drizzle: "🌦️",
+
+            Mist: "🌫️"
+        };
+
+        return weatherIcons[weatherType] || "🌍";
     }
 
 }
