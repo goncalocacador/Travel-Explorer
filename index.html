@@ -33,6 +33,47 @@
             </div>
         </section>
 
+        <section class="favorites">
+
+            <h3>⭐ Destinos Favoritos</h3>
+
+            <div class="favorites-controls">
+
+                <input type="text"
+                    id="favoriteSearch"
+                    placeholder="Pesquisar favoritos...">
+
+                <select id="favoriteSort">
+
+                    <option value="name">Ordenar por nome</option>
+
+                    <option value="temperature">
+                        Ordenar por temperatura
+                    </option>
+
+                    <option value="date">
+                        Ordenar por data
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div id="favoritesList" class="favorites-list">
+
+            <div class="empty-favorites">
+
+                    <h4>⭐ Sem favoritos</h4>
+
+                    <p>
+                        Pesquisa destinos e adiciona-os aos favoritos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
     </main>
 
     <script type="module" src="js/app.js"></script>

@@ -98,3 +98,150 @@ body {
     border-radius: 12px;
     margin-bottom: 20px;
 }
+
+.favorites {
+    padding: 40px 20px;
+}
+
+.favorites h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.favorites-list {
+    max-width: 700px;
+    margin: auto;
+}
+
+.favorite-item {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.favorite-item button {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.favorite-item button:hover {
+    background-color: #b91c1c;
+}
+
+.favorite-btn {
+    margin-top: 20px;
+    padding: 12px 18px;
+    background-color: #16a34a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.favorite-btn:hover {
+    background-color: #15803d;
+}
+
+.favorites-controls {
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 20px;
+
+    display: flex;
+    gap: 10px;
+}
+
+.favorites-controls input,
+.favorites-controls select {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.favorite-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.favorite-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.favorite-content {
+    padding: 20px;
+}
+
+.favorite-content h4 {
+    margin-bottom: 10px;
+}
+
+.favorite-content p {
+    margin-bottom: 8px;
+}
+
+.favorite-content button {
+    margin-top: 10px;
+
+    background-color: #dc2626;
+    color: white;
+
+    border: none;
+    padding: 10px 14px;
+
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.favorite-content button:hover {
+    background-color: #b91c1c;
+}
+
+.notification {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    background-color: #16a34a;
+    color: white;
+
+    padding: 15px 20px;
+
+    border-radius: 8px;
+
+    z-index: 999;
+}
+
+.empty-favorites {
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.empty-favorites h4 {
+    margin-bottom: 10px;
+}

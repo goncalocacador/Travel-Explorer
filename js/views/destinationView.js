@@ -44,6 +44,10 @@ export default class DestinationView {
 
             <p><strong>Humidade:</strong> ${data.humidity}%</p>
              
+                    <button class="favorite-btn" id="favoriteBtn">
+                        Guardar nos Favoritos
+                    </button>
+
         </div>
     `;
 }
@@ -57,6 +61,64 @@ export default class DestinationView {
                 <p>${message}</p>
             </div>
         `;
+    }
+    
+    renderFavorites(favorites) {
+
+    const favoritesList = document.getElementById("favoritesList");
+
+    if(favorites.length === 0) {
+
+        favoritesList.innerHTML = `
+            <p>Nenhum destino favorito guardado.</p>
+        `;
+
+        return;
+    }
+
+    favoritesList.innerHTML = favorites.map(favorite => `
+
+        <div class="favorite-card">
+
+            <img src="${favorite.image}" alt="${favorite.city}">
+
+            <div class="favorite-content">
+
+                <h4>${favorite.city}, ${favorite.country}</h4>
+
+                <p>
+                    🌡️ ${favorite.temperature}°C
+                </p>
+
+                <p>
+                    📅 Guardado em:
+                    ${favorite.addedAt}
+                </p>
+
+                <button data-city="${favorite.city}">
+                    Remover
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+}
+
+    showNotification(message) {
+
+        const notification = document.createElement("div");
+
+        notification.classList.add("notification");
+
+        notification.textContent = message;
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
     }
 
 }
