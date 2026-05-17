@@ -4,53 +4,98 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+html {
+    scroll-behavior: smooth;
 }
 
-.navbar {
-    background-color: #1e293b;
-    color: white;
-    padding: 20px;
-    text-align: center;
+body {
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        to bottom,
+        #f8fafc,
+        #e2e8f0
+    );
+
+    color: #1e293b;
+
+    min-height: 100vh;
 }
+
+
+.navbar {
+    background-color: #0f172a;
+
+    color: white;
+
+    padding: 20px;
+
+    text-align: center;
+
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+.navbar h1 {
+    letter-spacing: 1px;
+}
+
 
 .hero {
     text-align: center;
-    padding: 60px 20px;
+
+    padding: 80px 20px 60px 20px;
 }
 
 .hero h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
+
     margin-bottom: 15px;
 }
 
 .hero p {
     margin-bottom: 30px;
-    color: #666;
+
+    color: #475569;
+
+    font-size: 1.1rem;
 }
+
 
 .search-box {
     display: flex;
+
     justify-content: center;
+
     gap: 10px;
 }
 
 .search-box input {
     padding: 12px;
+
     width: 300px;
+
     border: 1px solid #ccc;
+
     border-radius: 8px;
 }
 
 .search-box button {
     padding: 12px 20px;
+
     border: none;
+
     background-color: #2563eb;
+
     color: white;
+
     border-radius: 8px;
+
     cursor: pointer;
 }
 
@@ -58,46 +103,93 @@ body {
     background-color: #1d4ed8;
 }
 
+input,
+select,
+button {
+    font-size: 1rem;
+
+    transition: 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+
+    border-color: #2563eb;
+
+    box-shadow: 0px 0px 0px 4px rgba(37,99,235,0.15);
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+
 .results {
     padding: 40px 20px;
 }
 
 .results h3 {
     text-align: center;
+
     margin-bottom: 20px;
 }
+
 
 .card {
     background-color: white;
+
     max-width: 700px;
+
     margin: auto;
+
     padding: 30px;
+
     border-radius: 12px;
+
     box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+
+    transition: 0.3s ease;
+
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.12);
 }
 
 .card p {
-    font-size: 1.1rem;
     line-height: 1.6;
-}
-
-.flag {
-    width: 100px;
-    margin-bottom: 20px;
-    border-radius: 6px;
 }
 
 .card hr {
     margin: 20px 0;
 }
 
+
 .destination-image {
     width: 100%;
+
     height: 300px;
+
     object-fit: cover;
+
     border-radius: 12px;
+
     margin-bottom: 20px;
 }
+
+
+.flag {
+    width: 100px;
+
+    margin-bottom: 20px;
+
+    border-radius: 6px;
+}
+
 
 .favorites {
     padding: 40px 20px;
@@ -105,83 +197,66 @@ body {
 
 .favorites h3 {
     text-align: center;
+
     margin-bottom: 20px;
 }
 
 .favorites-list {
     max-width: 700px;
+
     margin: auto;
 }
 
-.favorite-item {
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-}
-
-.favorite-item button {
-    background-color: #dc2626;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.favorite-item button:hover {
-    background-color: #b91c1c;
-}
-
-.favorite-btn {
-    margin-top: 20px;
-    padding: 12px 18px;
-    background-color: #16a34a;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.favorite-btn:hover {
-    background-color: #15803d;
-}
 
 .favorites-controls {
     max-width: 700px;
+
     margin: auto;
+
     margin-bottom: 20px;
 
     display: flex;
+
     gap: 10px;
 }
 
 .favorites-controls input,
 .favorites-controls select {
     flex: 1;
+
     padding: 12px;
+
     border-radius: 8px;
+
     border: 1px solid #ccc;
 }
 
+
 .favorite-card {
     background-color: white;
+
     border-radius: 12px;
+
     overflow: hidden;
+
     margin-bottom: 20px;
 
     box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+
+    transition: 0.3s ease;
+}
+
+.favorite-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.12);
 }
 
 .favorite-card img {
     width: 100%;
+
     height: 200px;
+
     object-fit: cover;
 }
 
@@ -195,18 +270,23 @@ body {
 
 .favorite-content p {
     margin-bottom: 8px;
+
+    line-height: 1.6;
 }
 
 .favorite-content button {
     margin-top: 10px;
 
     background-color: #dc2626;
+
     color: white;
 
     border: none;
+
     padding: 10px 14px;
 
     border-radius: 6px;
+
     cursor: pointer;
 }
 
@@ -214,13 +294,37 @@ body {
     background-color: #b91c1c;
 }
 
+
+.favorite-btn {
+    margin-top: 20px;
+
+    padding: 12px 18px;
+
+    background-color: #16a34a;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.favorite-btn:hover {
+    background-color: #15803d;
+}
+
+
 .notification {
     position: fixed;
 
     top: 20px;
+
     right: 20px;
 
     background-color: #16a34a;
+
     color: white;
 
     padding: 15px 20px;
@@ -228,7 +332,10 @@ body {
     border-radius: 8px;
 
     z-index: 999;
+
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
 }
+
 
 .empty-favorites {
     background-color: white;
@@ -244,4 +351,42 @@ body {
 
 .empty-favorites h4 {
     margin-bottom: 10px;
+}
+
+
+@media(max-width: 768px) {
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .search-box {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .search-box input {
+        width: 100%;
+
+        max-width: 400px;
+    }
+
+    .search-box button {
+        width: 100%;
+
+        max-width: 400px;
+    }
+
+    .favorites-controls {
+        flex-direction: column;
+    }
+
+    .destination-image {
+        height: 220px;
+    }
+
+    .favorite-card img {
+        height: 180px;
+    }
 }
