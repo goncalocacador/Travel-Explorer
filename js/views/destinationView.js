@@ -279,4 +279,114 @@ export default class DestinationView {
     `;
 }
 
+renderStatistics(history, favorites) {
+
+    const statisticsContainer =
+    document.getElementById(
+        "statisticsContainer"
+    );
+
+    const totalSearches =
+    history.length;
+
+
+    const totalFavorites =
+    favorites.length;
+
+    const cityCount = {};
+
+    history.forEach(city => {
+
+        cityCount[city] =
+        (cityCount[city] || 0) + 1;
+    });
+
+    let mostSearched =
+    "N/A";
+
+    let max = 0;
+
+    for(const city in cityCount) {
+
+        if(cityCount[city] > max) {
+
+            max = cityCount[city];
+
+            mostSearched = city;
+        }
+    }
+
+    let averageTemperature = 0;
+
+    if(favorites.length > 0) {
+
+        const totalTemperature =
+        favorites.reduce(
+
+            (sum, favorite) =>
+
+                sum + favorite.temperature,
+
+            0
+        );
+
+        averageTemperature =
+        Math.round(
+            totalTemperature /
+            favorites.length
+        );
+    }
+
+    statisticsContainer.innerHTML = `
+
+        <div class="stat-card">
+
+            <h4>
+                🔍 Pesquisas
+            </h4>
+
+            <p>
+                ${totalSearches}
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>
+                ⭐ Favoritos
+            </h4>
+
+            <p>
+                ${totalFavorites}
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>
+                🏙️ Cidade Popular
+            </h4>
+
+            <p>
+                ${mostSearched}
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>
+                🌡️ Média Temp.
+            </h4>
+
+            <p>
+                ${averageTemperature}°C
+            </p>
+
+        </div>
+    `;
+}
+
 }

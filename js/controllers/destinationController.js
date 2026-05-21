@@ -11,6 +11,13 @@ export default class DestinationController {
         this.searchBtn = document.getElementById("searchBtn");
         this.cityInput = document.getElementById("cityInput");
 
+        this.themeToggle =
+        document.getElementById("themeToggle");
+
+        this.initializeTheme();
+
+        this.handleThemeToggle();
+
         this.favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
         this.view.renderFavorites(this.favorites);
@@ -29,8 +36,6 @@ export default class DestinationController {
 
         this.initializeFavoriteEvents();
 
-        this.handleHistoryClick();
-
         this.searchHistory =
         JSON.parse(localStorage.getItem("searchHistory")) || [];
 
@@ -40,17 +45,15 @@ export default class DestinationController {
 
         this.handleHistoryClick();
 
-        this.themeToggle =
-        document.getElementById("themeToggle");
-
-        this.initializeTheme();
-
-        this.handleThemeToggle();
-
         this.locationBtn =
         document.getElementById("locationBtn");
 
         this.handleCurrentLocation();
+
+        this.view.renderStatistics(
+    this.searchHistory,
+    this.favorites
+);
     }
 
     addEventListeners() {
@@ -96,6 +99,11 @@ export default class DestinationController {
             );
 
             this.saveSearchHistory(city);
+
+            this.view.renderStatistics(
+                    this.searchHistory,
+                    this.favorites
+                );
 
             this.handleFavoriteButton(weatherData);
 
@@ -154,6 +162,11 @@ export default class DestinationController {
 
         this.view.renderFavorites(this.favorites);
 
+        this.view.renderStatistics(
+                this.searchHistory,
+                this.favorites
+            );
+
         this.view.showNotification(
             "Destino adicionado aos favoritos."
         );
@@ -186,6 +199,11 @@ export default class DestinationController {
                 );
 
                 this.view.renderFavorites(this.favorites);
+
+                this.view.renderStatistics(
+                    this.searchHistory,
+                    this.favorites
+                );
             });
         }
 
