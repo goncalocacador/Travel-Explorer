@@ -61,6 +61,47 @@ export default class DestinationView {
             <p><strong>Clima:</strong> ${data.weather}</p>
 
             <p><strong>Humidade:</strong> ${data.humidity}%</p>
+
+            <div class="forecast-section">
+
+                <h3>
+                    📅 Previsão próximos dias
+                </h3>
+
+                <div class="forecast-grid">
+
+                    ${data.forecast.map(day => `
+
+                        <div class="forecast-card">
+
+                            <p>
+
+                                ${new Date(day.dt_txt)
+                                    .toLocaleDateString("pt-PT", {
+                                        weekday: "short"
+                                    })}
+
+                            </p>
+
+                            <img
+                                src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"
+                            >
+
+                            <h4>
+                                ${Math.round(day.main.temp)}°C
+                            </h4>
+
+                            <span>
+                                ${day.weather[0].main}
+                            </span>
+
+                        </div>
+
+                    `).join("")}
+
+                </div>
+
+            </div>
              
                     <button class="favorite-btn" id="favoriteBtn">
                         Guardar nos Favoritos

@@ -37,6 +37,13 @@ export default class DestinationModel {
         const destinationImage = imageData.results[0]?.urls?.regular ||
         "https://via.placeholder.com/800x400?text=Imagem+Indisponivel";
 
+        const forecast =
+        await this.getForecastData(
+            weatherData.coord.lat,
+            weatherData.coord.lon
+        );
+        
+
         return {
             city: weatherData.name,
             temperature: weatherData.main.temp,
@@ -52,8 +59,24 @@ export default class DestinationModel {
             image: destinationImage,
 
             weatherMain: weatherData.weather[0].main,
-            icon: weatherData.weather[0].icon
+            icon: weatherData.weather[0].icon,
+            forecast
         };
     }
+
+    async getForecastData(lat, lon) {
+
+    const response = await fetch(
+
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=4ea476f30971706c3cfe7edddefe4761&units=metric`
+
+    );
+
+            const data = await response.json();
+
+            return data.list.filter(item =>
+                item.dt_txt.includes("12:00:00")
+            ).slice(0, 5);
+        }
 
 }
