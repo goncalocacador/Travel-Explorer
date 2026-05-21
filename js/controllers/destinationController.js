@@ -46,6 +46,11 @@ export default class DestinationController {
         this.initializeTheme();
 
         this.handleThemeToggle();
+
+        this.locationBtn =
+        document.getElementById("locationBtn");
+
+        this.handleCurrentLocation();
     }
 
     addEventListeners() {
@@ -354,4 +359,60 @@ export default class DestinationController {
                 isDark ? "☀️" : "🌙";
             });
         }
+
+        handleCurrentLocation() {
+
+        this.locationBtn.addEventListener("click", () => {
+
+            if(!navigator.geolocation) {
+
+                this.view.renderError(
+                    "Geolocalização não suportada."
+                );
+
+                return;
+            }
+
+            this.view.showLoader();
+
+            navigator.geolocation.getCurrentPosition(
+
+                async (position) => {
+
+                    try {
+
+                        const lat =
+                                position.coords.latitude;
+
+                                const lon =
+                                position.coords.longitude;
+
+                                const destination =
+                                new DestinationModel("");
+
+                                const city =
+                                    await destination.getMainCityByCoordinates(
+                                        lat,
+                                        lon
+                                    );
+
+                                await this.searchDestination(city);
+
+                    } catch(error) {
+
+                        this.view.renderError(
+                            "Não foi possível obter a localização."
+                        );
+                    }
+                },
+
+                () => {
+
+                    this.view.renderError(
+                        "Permissão de localização negada."
+                    );
+                }
+            );
+        });
+    }
 }

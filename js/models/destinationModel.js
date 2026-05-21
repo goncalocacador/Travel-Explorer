@@ -6,77 +6,136 @@ export default class DestinationModel {
 
     async getWeatherData() {
 
-        const apiKey = "4ea476f30971706c3cfe7edddefe4761";
+            const apiKey =
+            "4ea476f30971706c3cfe7edddefe4761";
 
-        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&units=metric&appid=${apiKey}`;
+            const weatherUrl =
 
-        const weatherResponse = await fetch(weatherUrl);
+            `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&units=metric&appid=${apiKey}&lang=pt`;
 
-        if(!weatherResponse.ok) {
-            throw new Error("Cidade não encontrada.");
+            const weatherResponse =
+            await fetch(weatherUrl);
+
+            if(!weatherResponse.ok) {
+
+                throw new Error(
+                    "Cidade não encontrada."
+                );
+            }
+
+            const weatherData =
+            await weatherResponse.json();
+
+            return this.buildWeatherData(weatherData);
         }
 
-        const weatherData = await weatherResponse.json();
 
-        const countryCode = weatherData.sys.country;
+        async getForecastData(lat, lon) {
 
-        const countryUrl = `https://restcountries.com/v3.1/alpha/${countryCode}`;
+        const response = await fetch(
 
-        const countryResponse = await fetch(countryUrl);
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=4ea476f30971706c3cfe7edddefe4761&units=metric&lang=pt`
 
-        const countryData = await countryResponse.json();
-
-        const unsplashKey = "c98ao0BAlVOpN08nCF7gNxD0vpgGKKSgGWUGp102Vq8";
-
-        const imageUrl = `https://api.unsplash.com/search/photos?page=1&query=${this.cityName}&client_id=${unsplashKey}`;
-
-        const imageResponse = await fetch(imageUrl);
-
-        const imageData = await imageResponse.json();
-
-        const destinationImage = imageData.results[0]?.urls?.regular ||
-        "https://via.placeholder.com/800x400?text=Imagem+Indisponivel";
-
-        const forecast =
-        await this.getForecastData(
-            weatherData.coord.lat,
-            weatherData.coord.lon
         );
+
+                const data = await response.json();
+
+                return data.list.filter(item =>
+                    item.dt_txt.includes("12:00:00")
+                ).slice(0, 5);
+            }
+
+
+        async getMainCityByCoordinates(lat, lon) {
+
+                const response = await fetch(
+
+                    `https://secure.geonames.org/findNearbyPlaceNameJSON?lat=${lat}&lng=${lon}&username=goncalocacador&lang=pt`
+
+                );
+
+                const data =
+                await response.json();
+
+                return data.geonames[0].name;
+            }
         
 
-        return {
-            city: weatherData.name,
-            temperature: weatherData.main.temp,
-            weather: weatherData.weather[0].description,
-            humidity: weatherData.main.humidity,
+        async getCityImage(cityName) {
 
-            country: countryData[0].name.common,
-            capital: countryData[0].capital[0],
-            population: countryData[0].population,
-            region: countryData[0].region,
-            flag: countryData[0].flags.png,
+                const unsplashKey =
+                "c98ao0BAlVOpN08nCF7gNxD0vpgGKKSgGWUGp102Vq8";
 
-            image: destinationImage,
+                const imageUrl =
 
-            weatherMain: weatherData.weather[0].main,
-            icon: weatherData.weather[0].icon,
-            forecast
-        };
-    }
+                `https://api.unsplash.com/search/photos?page=1&query=${cityName}&client_id=${unsplashKey}&lang=pt`;
 
-    async getForecastData(lat, lon) {
+                const imageResponse =
+                await fetch(imageUrl);
 
-    const response = await fetch(
+                const imageData =
+                await imageResponse.json();
 
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=4ea476f30971706c3cfe7edddefe4761&units=metric`
+                return imageData.results[0]?.urls?.regular ||
 
-    );
+                "https://via.placeholder.com/800x400?text=Imagem+Indisponivel";
+            }
 
-            const data = await response.json();
+        async buildWeatherData(weatherData) {
 
-            return data.list.filter(item =>
-                item.dt_txt.includes("12:00:00")
-            ).slice(0, 5);
+            const countryResponse = await fetch(
+
+                `https://restcountries.com/v3.1/alpha/${weatherData.sys.country}`
+
+            );
+
+            const countryData =
+            await countryResponse.json();
+
+            const image =
+                await this.getCityImage(weatherData.name);
+
+            const forecast =
+            await this.getForecastData(
+                weatherData.coord.lat,
+                weatherData.coord.lon
+            );
+
+            return {
+
+                city: weatherData.name,
+
+                country:
+                countryData[0].name.common,
+
+                capital:
+                countryData[0].capital[0],
+
+                population:
+                countryData[0].population,
+
+                flag:
+                countryData[0].flags.png,
+
+                temperature:
+                Math.round(weatherData.main.temp),
+
+                humidity:
+                weatherData.main.humidity,
+
+                weather:
+                weatherData.weather[0].description,
+
+                weatherMain:
+                weatherData.weather[0].main,
+
+                icon:
+                weatherData.weather[0].icon,
+
+                image,
+
+                forecast
+            };
         }
 
 }

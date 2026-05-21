@@ -584,8 +584,6 @@ button:hover {
         #334155,
         #0f172a
     );
-
-    color: white;
 }
 
 .snow-theme {
@@ -810,12 +808,6 @@ button:hover {
 
     .dark-mode {
 
-            background: linear-gradient(
-                to bottom,
-                #020617,
-                #0f172a
-            );
-
             color: #f8fafc;
         }
 
@@ -943,6 +935,8 @@ button:hover {
 
             color: #cbd5e1;
         }
+
+        
     .forecast-section {
 
     margin-top: 30px;
@@ -991,4 +985,137 @@ button:hover {
         .forecast-card h4 {
 
             margin: 10px 0;
+        }
+
+        .location-btn {
+
+        padding: 12px 18px;
+
+        border: none;
+
+        border-radius: 8px;
+
+        background-color: #0ea5e9;
+
+        color: white;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+    }
+
+    .location-btn:hover {
+
+        background-color: #0284c7;
+    }
+
+    .weather-emoji {
+
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+        .forecast-emoji {
+
+            font-size: 2rem;
+
+            margin-bottom: 10px;
+        }
+
+        .dark-mode.sunny-theme {
+
+            background: linear-gradient(
+                to bottom,
+                #1e293b,
+                #334155
+            );
+        }
+
+        .dark-mode.cloudy-theme {
+
+            background: linear-gradient(
+                to bottom,
+                #0f172a,
+                #1e293b
+            );
+        }
+
+        .dark-mode.rainy-theme {
+
+            background: linear-gradient(
+                to bottom,
+                #020617,
+                #1e293b
+            );
+        }
+
+        .dark-mode.snow-theme {
+
+            background: linear-gradient(
+                to bottom,
+                #334155,
+                #475569
+            );
+        }
+
+        .dark-mode.default-theme {
+
+            background: linear-gradient(
+                to bottom,
+                #0f172a,
+                #1e293b
+            );
+        }
+
+
+        .rainy-theme .hero h2,
+        .rainy-theme .hero p,
+        .rainy-theme .search-history h3,
+        .rainy-theme .results h3,
+        .rainy-theme .favorites h3,
+        .rainy-theme .empty-history p,
+        .rainy-theme .empty-favorites p {
+
+            color: #f8fafc;
+        }
+
+
+
+        .rainy-theme .history-item {
+
+            background-color: rgba(255,255,255,0.12);
+
+            color: white;
+
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+
+        .rainy-theme input::placeholder{
+
+            color: #cbd5e1;
+        }
+
+
+        .rainy-theme select,
+        .rainy-theme input {
+
+            background-color: rgba(255,255,255,0.1);
+
+            color: white;
+
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+
+        .rainy-theme #favoritesList {
+
+            color: #f8fafc;
+        }
+
+        .rainy-theme #favoritesList p,
+        .rainy-theme #favoritesList h4 {
+
+            color: #f8fafc;
         }

@@ -29,11 +29,11 @@ export default class DestinationView {
 
             <div class="weather-header">
 
-                <img 
-                    src="https://openweathermap.org/img/wn/${data.icon}@2x.png"
-                    alt="Weather Icon"
-                    class="weather-icon"
-                >
+                <div class="weather-emoji">
+
+                ${this.getWeatherEmoji(data.weatherMain)}
+
+            </div>
 
                 <h2>${data.city}, ${data.country}</h2>
 
@@ -46,8 +46,7 @@ export default class DestinationView {
                 <span class="weather-badge">
 
                     ${this.getWeatherEmoji(data.weatherMain)}
-                    ${data.weatherMain}
-
+                    ${data.weather}
                 </span>
 
             </div>
@@ -83,16 +82,18 @@ export default class DestinationView {
 
                             </p>
 
-                            <img
-                                src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"
-                            >
+                            <div class="forecast-emoji">
+
+                                ${this.getWeatherEmoji(day.weather[0].main)}
+
+                            </div>
 
                             <h4>
                                 ${Math.round(day.main.temp)}°C
                             </h4>
 
                             <span>
-                                ${day.weather[0].main}
+                                ${day.weather[0].description}
                             </span>
 
                         </div>
